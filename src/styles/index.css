@@ -1,0 +1,30 @@
+body{
+    background-color: blueviolet;
+}
+
+.tablero-gato{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    border: 1px solid;
+    grid-gap:  0px;
+    border: 2px solid black;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 550px;
+    margin-top: 25px;
+}
+.cuadritos{
+    border: 1px solid rgb(16, 92, 2); 
+}
+.boton{
+    border: 1px solid silver;
+    margin-top: 430px;
+    margin-left: 710px;
+    border: 2px solid red;
+    padding: 5px;
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+}
