@@ -1,11 +1,34 @@
-let cuadricula = document.getElementsByClassName("cuadritos");
-let botonI = document.getElementById("botoncito");
+const cuadricula = document.getElementsByClassName("cuadritos");
+const botonI = document.getElementById("botoncito");
+const celdasTabla = Array.from(document.querySelectorAll(".cuadritos"));
+const opciones = document.getElementById("mostrarOpciones")
+
+
+let primerJUga = true;
+let seguJugador = false;
 
 const simbolosJugador = (e) =>{
     const tablaJuga = e.target.innerHTML
-}
+    if (!tablaJuga) {
+        e.target.innerHTML = primerJUga ? "❌" : "⭕";
+        primerJUga = !primerJUga;
+        posiblidadesJuego();
+        if (!seguJugador) funciComputadora();
+    }
+    opciones.classList.toggle("js", e.target.innerHTML === "❌");
+    opciones.classList.toggle("js2", e.target.innerHTML === "⭕");
+};
+const funciComputadora = () => {
+    const casillasVacias = celdasTabla.filter((celda) => !celda.innerHTML);
+    if (casillasVacias.length > 0) {
+        const alea = Math.floor(Math.random() * casillasVacias.length);
+        casillasVacias[alea].innerHTML = "⭕";
+        primerJUga = true; 
+        posiblidadesJuego();
+    }     
+};
 
-const checkWinner = () => {
+const posiblidadesJuego = () => {
     const winningCombos = [
         [0, 1, 2], 
         [3, 4, 5], 
@@ -17,3 +40,4 @@ const checkWinner = () => {
         [2, 4, 6],
     ];
 }
+simbolosJugador()
