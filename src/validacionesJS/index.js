@@ -41,6 +41,7 @@ function refrescar(celda, index) {
 function cambiarJugador() {
     primerJugador =(primerJugador == "❌") ? "⭕" : "❌"
     texto.textContent = `${primerJugador} turno`;
+    verGanador()
 }
 function refrescarJuego() {
     primerJugador = "❌"
@@ -49,31 +50,36 @@ function refrescarJuego() {
     celdasTable.forEach(cell => cell.textContent = "");
     consola = true;
 }
+let ganadorPartida = false;
 function verGanador() {
-    const ganadorPartida = false;
-    for (let i = 0; i < posiblesGanar.length; i++) {
-       const condicionJuego = posiblesGanar[i];
-       const celdaSA = opcionesJuego[condicionJuego[0]];
-       const celdaSB = opcionesJuego[condicionJuego[1]];
-       const celdaSC = opcionesJuego[condicionJuego[2]];
-       if (celdaSA == "" || celdaSB == "" || celdaSC == "") {
-            continue;
-       }
-       if (celdaSA == celdaSB && celdaSB == celdaSC) {
-        ganadorPartida = true
-        break;
-       }
-       if (ganadorPartida) {
-        texto.textContent = `${primerJugador} Gano`;
-        consola = false;
-       }else if (!opcionesJuego.includes("")){
-        texto.textContent = `Empate`;
-        consola = false;
-       }else{
-        cambiarJugador();
-       }
+    console.log("ENTRA");
+    
+    for (const combo of posiblesGanar) {
+        let [a, b, c] = combo;
+        if (celdasTable[a].innerHTML && celdasTable[a].innerHTML === celdasTable[b].innerHTML && 
+            celdasTable[a].innerHTML === celdasTable[c].innerHTML) {
+            ganadorPartida=true
+            alert("¡Ganaste!");
+        }
     }
 }
+function jugarAI(params) {
+    let jugarCompu = Infinity;
+    let jugarAI;
+
+     for (let i = 0; i < 3; i++) {
+     for (let h = 0; h < 3; h++) {
+       if (celdasTable[i][h] = "") {
+        celdasTable[i][h] = ai
+        let resultado = minimax(celdasTable);
+        celdasTable[i][h] = "";
+        if (resultado > jugarCompu) {
+            
+        }
+     }    
+    }    
+   }
+  }
 
 
 
@@ -149,3 +155,27 @@ function verGanador() {
 // };
 
 
+
+
+ // for (let i = 0; i < posiblesGanar.length; i++) {
+    //    const condicionJuego = posiblesGanar[i];
+    //    const celdaSA = opcionesJuego[condicionJuego[0]];
+    //    const celdaSB = opcionesJuego[condicionJuego[1]];
+    //    const celdaSC = opcionesJuego[condicionJuego[2]];
+    //    if (celdaSA == "" || celdaSB == "" || celdaSC == "") {
+    //         continue;
+    //    }
+    //    if (celdaSA == celdaSB && celdaSB == celdaSC) {
+    //     ganadorPartida = true
+    //     break;
+    //    }
+    //    if (ganadorPartida) {
+    //     texto.textContent = `${primerJugador} Gano`;
+    //     consola = false;
+    //    }else if (!opcionesJuego.includes("")){
+    //     texto.textContent = `Empate`;
+    //     consola = false;
+    //    }else{
+    //     cambiarJugador();
+    //    }
+    // }
