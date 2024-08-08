@@ -24,6 +24,7 @@ function iniciarJuego() {
     boton.addEventListener("click", refrescarJuego)
     texto.textContent = `${primerJugador} turno`;
     consola = true;
+    
 }
 function validacionCeldas() {
     const indexCeldas = this.getAttribute("cellIndex")
@@ -32,7 +33,9 @@ function validacionCeldas() {
    }
    refrescar(this, indexCeldas);
    iniciarJuego();
-   cambiarJugador();
+   cambiarJugador()
+
+   juegoPc()
 }
 function refrescar(celda, index) {
     opcionesJuego[index] = primerJugador;
@@ -45,6 +48,7 @@ function cambiarJugador() {
 }
 function refrescarJuego() {
     primerJugador = "❌"
+
     opcionesJuego = ["","","","","","","","",""];
     texto.textContent = `${primerJugador} turno`;
     celdasTable.forEach(cell => cell.textContent = "");
@@ -63,23 +67,19 @@ function verGanador() {
         }
     }
 }
-function jugarAI(params) {
-    let jugarCompu = Infinity;
-    let jugarAI;
+function juegoPc(){
+setTimeout(() => {
+        let arregloConvertido= Array.from(celdasTable)
+        let arregloVacios = arregloConvertido.filter((celda)=>celda.innerHTML=="")
+        let numAleatorio = Math.floor(Math.random()*arregloVacios.length)
+        let segundoJugador = null
+        segundoJugador=(segundoJugador == "⭕") ? "❌" : "⭕"
+        texto.textContent = `${segundoJugador} turno`;
+        cambiarJugador()
+        arregloVacios[numAleatorio].innerHTML=segundoJugador
+}, 500);
+}
 
-     for (let i = 0; i < 3; i++) {
-     for (let h = 0; h < 3; h++) {
-       if (celdasTable[i][h] = "") {
-        celdasTable[i][h] = ai
-        let resultado = minimax(celdasTable);
-        celdasTable[i][h] = "";
-        if (resultado > jugarCompu) {
-            
-        }
-     }    
-    }    
-   }
-  }
 
 
 
