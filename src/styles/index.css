@@ -1,7 +1,17 @@
 body{
-    background-color: blueviolet;
+   background-image: url(/imagenes/cat-4143414_1920.jpg);
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   min-height: 100vh;
 }
-
+#estadoT{
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: relative; /* Asegúrate de que el elemento esté posicionado */
+    top: -50px;
+}
 .tablero-gato{
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -16,23 +26,31 @@ body{
 }
 .cuadritos{
     border: 1px solid rgb(16, 92, 2); 
+    background-color: rgb(192, 192, 192, 0.3);
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
 }
 .boton{
     border: 1px solid silver;
-    margin-top: 430px;
+    margin-top: 400px;
     margin-left: 710px;
     border: 2px solid red;
-    padding: 5px;
+   
 }
 .titulo{
     display: flex;
     justify-content: center;
 }
-#mainConta{
+#mainConta,#contaO{
     width: 80px;
     height: 80px;
     border-radius: 50%;
     display: flex;
+    margin-top: 5px;
     text-align: center; 
-    background-color: white
+    background-color: white;
+}
+.titulo{
+    color: aqua;
 }

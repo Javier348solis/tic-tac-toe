@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIC TAC TOE</title>
     <link rel="stylesheet" href="/src/styles/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <h1 class="titulo">TIC-TAC-TOE</h1>
     <div id="contador">
-        <input id="mainConta" type="number" readonly>
+        <h1>❌</h1>
+        <input id="mainConta" type="number" readonly value="0">
+        <h1>⭕</h1>
+        <input id="contaO" type="number" readonly value="0">
     </div>
     <section class="tablero-gato">
         <div cellIndex="0" class="cuadritos" id="Espacio1"></div>
